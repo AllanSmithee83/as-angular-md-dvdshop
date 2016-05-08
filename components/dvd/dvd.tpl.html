@@ -1,0 +1,60 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+      <span>DVD Store</span>
+	   <md-button ng-click="vm.openSidebar()">
+       <md-icon class="mdi mdi-plus-circle" ></md-icon>
+	   ADD MOVIE
+      </md-button>
+	  </div>
+	  	 
+ </md-toolbar>
+ 
+ 
+ 
+		  <div class="filters" layout="row" layout-align="center center">
+				<md-input-container>
+					<label>Search </label>
+					<input type="text" ng-model="movieFilter" />
+								<md-icon class="mdi mdi-magnify"></md-icon>
+				</md-input-container>
+				
+				
+			
+			  </div>
+
+<ui-view></ui-view>
+
+		
+      </md-content>
+    </md-sidenav>
+	  
+<md-content class="md-padding" layout="row" layout-wrap>
+    <md-card ng-repeat="dvd in vm.dvds | filter: movieFilter " flex="30" class="anime">
+	<img class="img" ng-src="img/{{dvd.image}}" alt="" />
+	<md-card-content>
+	<div class="dvdinfo"ng-show="!showDescription" >
+		<h2 class="md-title">{{dvd.title}}</h2>
+		<p>{{dvd.year}}</p>
+		<h3> {{dvd.price |currency:"din: " }}</h3>
+		<h4><strong>{{dvd.ganre}}</strong></h4>
+			
+	</div>
+	<div>
+	<p ng-show="showDescription">{{dvd.description}}</p>
+		<div layout="row">
+		<md-button ng-click="showDescription = true" ng-show="!showDescription">Description</md-button>
+		<md-button ng-click="showDescription = false"ng-show="showDescription">Details</md-button>
+		<md-button ng-click="showAdmin = true" ng-show="!showAdmin">Admin</md-button>
+		<md-button ng-click="showAdmin = false" ng-show="showAdmin">Close</md-button>
+		</div>
+	<div class="dvd-admin" ng-if="showAdmin">
+	<h3>Admin</h3>
+	<div layout="row">
+	<md-button class="md-primary" ng-click="vm.editMovie(dvd)">Edit</md-button>
+	<md-button class="md-warn"ng-click="vm.deleteMovie($event, dvd)">Delete</md-button>
+	</div>
+	</div>	
+		
+	</md-card-content>
+	</md-card>
+</md-content>

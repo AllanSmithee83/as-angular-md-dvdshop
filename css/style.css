@@ -1,0 +1,36 @@
+button .material-icons{
+	margin-top:7px;
+	
+}
+
+md-input-container.md-icon-right > md-icon:last-of-type {
+	margin-top:7px;
+}
+
+
+.img {
+	display:inline-block;
+	height:450px;
+	width:90%;
+	
+}
+
+.anime.ng-enter, .anime.ng-move{
+	transition: 0.7s all;
+	opacity:0;
+}
+
+.anime.ng-enter.ng-enter-active,  .anime.ng-move.ng-move-active{
+	
+	opacity:1;
+}
+
+.anime.ng-leave {
+	animation:0.7s fade_anime;
+}
+
+
+@keyframes fade_anime{
+	from {opacity:1;}
+	to {opacity:0;}
+}
